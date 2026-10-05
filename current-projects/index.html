@@ -12,15 +12,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/style.css">
+  <script src="../nav.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-  <header>
+  <header id = "site-header">
     <a class="brand" href="/">
       <img class="logo-img" src="/logo-wordmark.svg" alt="Northstar Strategy Group">
     </a>
-    <nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id = "site-nav">
       <a href="/">Home</a>
       <a href="/current-projects/" class="active">Current Projects</a>
       <a href="/news/">News</a>

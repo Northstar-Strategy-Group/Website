@@ -10,6 +10,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  font-size: 1.25em;
   font-weight: 300; /* Poppins Light */
   margin: 0;
   color: var(--black);
@@ -18,25 +19,69 @@ body {
 }
 
 header {
-  background: var(--white);
-  border-bottom: 1px solid var(--accent);
-  padding: 1.25rem 2rem;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  min-height: 38px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: #fff;
+  border-bottom: 2px solid var(--accent);
+  z-index: 1000;
+  transition: transform 0.3s ease;  
 }
+header.nav-hidden { transform: translateY(-100%); }
 
-header .brand {
+.logo-img { height: 100px; width: auto; display: block; }
+
+header .brand { 
   text-decoration: none;
   display: flex;
   align-items: center;
 }
 
 header .brand .logo-img {
-  height: 64px;
+  height: 100px;
   width: auto;
   display: block;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--navy);
+  background: #fff;
+  font: 700 1rem 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+.menu-icon {
+  position: relative;
+  width: 1.1rem;
+  height: 0.8rem;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.menu-icon::before {
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  left: 0;
+  border-top: 2px solid currentColor;
+  content: '';
+}
+
+.nav-toggle:focus-visible,
+header nav a:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
 }
 
 nav a {
@@ -44,10 +89,9 @@ nav a {
   font-weight: 700; /* Rajdhani Bold */
   color: var(--muted);
   text-decoration: none;
-  margin-left: 1.5rem;
-  font-size: 1.05rem;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
+  font-size: 1.65rem;
+  padding: 6px 9px;
+  border-bottom: 1.5px solid transparent;
 }
 
 nav a:hover,
@@ -71,8 +115,8 @@ nav a.active {
 
 .hero h1 {
   font-family: 'Rajdhani', sans-serif;
-  font-weight: 700; /* Rajdhani Bold, for the largest heading on the site */
-  font-size: 2.6rem;
+  font-weight: 1000; /* Rajdhani Bold, for the largest heading on the site */
+  font-size: 3.2rem;
   margin-top: 0;
   margin-bottom: 0.5rem;
   color: var(--white);
@@ -81,7 +125,7 @@ nav a.active {
 .hero p {
   color: var(--white);
   opacity: 0.85;
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -99,6 +143,7 @@ h1 {
   font-family: 'Poppins', sans-serif;
   font-weight: 800; /* Poppins Extra Bold */
   color: var(--navy);
+  margin-top: 10rem;
 }
 
 h2 {
@@ -110,7 +155,7 @@ h2 {
 
 .card {
   border: 1px solid var(--accent);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
   background: var(--white);
@@ -121,6 +166,11 @@ h2 {
   font-weight: 600; /* Poppins Semi Bold */
   margin-top: 0;
   color: var(--navy);
+}
+
+.contact-card p > a {
+  display: block;
+  overflow-wrap: anywhere;
 }
 
 .job-listing strong {
@@ -145,6 +195,62 @@ h2 {
 
 .news-post .project-card-body {
   padding-top: 0.1rem;
+}
+
+.latest-news-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  padding: 0;
+  overflow: hidden;
+}
+
+.latest-news-image {
+  display: block;
+  min-width: 0;
+}
+
+.latest-news-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.latest-news-body {
+  min-width: 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.latest-news-body h3 {
+  margin: 0 0 0.5rem;
+  color: var(--navy);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.latest-news-body h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.latest-news-body h3 a:hover {
+  text-decoration: underline;
+}
+
+.latest-news-body .muted {
+  margin: 0 0 0.35rem;
+}
+
+.latest-news-excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.latest-news .button {
+  margin-top: 0;
 }
 
 .news-links {
@@ -267,7 +373,7 @@ h2 {
   width: 80%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  border-radius: 0px;
+  border-radius: 12px;
   border: 1px solid var(--accent);
   display: block;
   margin: 2.5rem auto 1rem;
@@ -357,26 +463,26 @@ a.button:hover {
 
 footer {
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
   color: var(--muted);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--accent);
-  margin-top: 3rem;
+  font-size: 1.275rem;
+  border-top: 1.5px solid var(--accent);
+  margin-top: 2.25rem;
   text-align: center;
 }
 
 .footer-legal {
   position: absolute;
-  left: 2rem;
+  left: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .footer-legal a {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 1em;
   text-decoration: none;
 }
 
@@ -401,8 +507,8 @@ footer {
 }
 
 .social-icons a {
-  width: 36px;
-  height: 36px;
+  width: 72px;
+  height: 72px;
   display: block;
   transition: opacity 0.15s;
 }
@@ -415,4 +521,148 @@ footer {
 
 .social-icons a:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  header {
+    position: sticky;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  header .brand {
+    justify-content: flex-start;
+  }
+
+  header .brand .logo-img {
+    height: clamp(64px, 10vw, 90px);
+    max-width: 100%;
+  }
+
+  header nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  header nav:not(.open) {
+    display: none;
+  }
+
+  header nav.open {
+    display: grid;
+  }
+
+  header nav a {
+    padding: 0.5rem 0.25rem;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  main,
+  main.wide {
+    width: 100%;
+    padding-inline: 1.25rem;
+  }
+
+  main h1 {
+    margin-top: 2rem;
+  }
+
+  .ceo-photo {
+    width: min(100%, 335px);
+    height: auto;
+    aspect-ratio: 335 / 250;
+  }
+
+  .post-gallery.scroll img {
+    height: clamp(220px, 45vw, 360px);
+  }
+}
+
+@media (max-width: 600px) {
+  header .brand .logo-img {
+    height: 64px;
+  }
+
+  header nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  header nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  main,
+  main.wide {
+    padding-inline: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  main h1 {
+    margin-top: 1.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .latest-news-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-news-image img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .latest-news-body {
+    padding: 1rem;
+  }
+
+  footer {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-icons a {
+    width: 48px;
+    height: 48px;
+  }
 }

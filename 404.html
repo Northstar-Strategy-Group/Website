@@ -16,6 +16,23 @@
   <script src="/dropdown.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // Old addresses (from before the pages were renamed) are sent to their new home.
+    // To add another redirect, add a line to this list.
+    (function () {
+      var moved = {
+        '/current-projects/': '/current-projects',
+        '/news/': '/news',
+        '/careers/': '/careers',
+        '/about/': '/about/about-us',
+        '/team/': '/about/our-team',
+        '/contact/': '/about/contact'
+      };
+      var path = location.pathname.toLowerCase().replace(/index\.html$/, '');
+      if (path.charAt(path.length - 1) !== '/') path += '/';
+      if (moved[path]) location.replace(moved[path] + location.search + location.hash);
+    })();
+  </script>
 </head>
 <body>
   <header id="site-header">
@@ -28,15 +45,15 @@
     </button>
     <nav id="site-nav">
       <a href="/">Home</a>
-      <a href="/current-projects/">Current Projects</a>
-      <a href="/news/">News</a>
-      <a href="/careers/">Careers</a>
+      <a href="/current-projects">Current Projects</a>
+      <a href="/news">News</a>
+      <a href="/careers">Careers</a>
       <div class="nav-dropdown">
-        <a href="/about/about-us.html" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <a href="/about/about-us" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
         <div class="nav-dropdown-menu" id="about-menu">
-          <a href="/about/about-us.html">About Us</a>
-          <a href="/about/our-team.html">Our Team</a>
-          <a href="/about/contact.html">Contact</a>
+          <a href="/about/about-us">About Us</a>
+          <a href="/about/our-team">Our Team</a>
+          <a href="/about/contact">Contact</a>
         </div>
       </div>
     </nav>

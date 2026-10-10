@@ -3,9 +3,11 @@
   const preview = document.getElementById('latest-news-preview');
   if (!section || !preview) return;
 
-  const newsUrl = new URL('news/', document.baseURI);
+  // newsUrl is the address visitors see; newsSource is the file the latest post is read from
+  const newsUrl = new URL('/news', document.baseURI);
+  const newsSource = new URL('/news.html', document.baseURI);
 
-  fetch(newsUrl, { cache: 'no-cache' })
+  fetch(newsSource, { cache: 'no-cache' })
     .then((response) => {
       if (!response.ok) throw new Error(`News page returned ${response.status}`);
       return response.text();
@@ -30,7 +32,7 @@
         const imageLink = postLink.cloneNode();
         imageLink.className = 'latest-news-image';
         const previewImage = document.createElement('img');
-        previewImage.src = new URL(image.getAttribute('src'), newsUrl).href;
+        previewImage.src = new URL(image.getAttribute('src'), newsSource).href;
         previewImage.alt = image.alt;
         imageLink.append(previewImage);
         card.append(imageLink);

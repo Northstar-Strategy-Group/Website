@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | Northstar Strategy Group</title>
+  <title>Contact | Northstar Strategy Group</title>
+  <link rel="canonical" href="https://northstar-sg.com/contact">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
@@ -16,26 +17,6 @@
   <script src="/dropdown.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-  <script>
-    // Old addresses (from before the pages were renamed) are sent to their new home.
-    // To add another redirect, add a line to this list.
-    (function () {
-      var moved = {
-        '/current-projects/': '/current-projects',
-        '/news/': '/news',
-        '/careers/': '/careers',
-        '/about/': '/about-us',
-        '/about/about-us/': '/about-us',
-        '/about/our-team/': '/our-team',
-        '/about/contact/': '/contact',
-        '/team/': '/our-team',
-        '/contact/': '/contact'
-      };
-      var path = location.pathname.toLowerCase().replace(/index\.html$/, '');
-      if (path.charAt(path.length - 1) !== '/') path += '/';
-      if (moved[path]) location.replace(moved[path] + location.search + location.hash);
-    })();
-  </script>
 </head>
 <body>
   <header id="site-header">
@@ -52,20 +33,34 @@
       <a href="/news">News</a>
       <a href="/careers">Careers</a>
       <div class="nav-dropdown">
-        <a href="/about-us" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <a href="/about-us" class="nav-dropdown-toggle active" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
         <div class="nav-dropdown-menu" id="about-menu">
           <a href="/about-us">About Us</a>
           <a href="/our-team">Our Team</a>
-          <a href="/contact">Contact</a>
+          <a href="/contact" class="active">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <h1>Page Not Found</h1>
-    <p>Unfortunately, we could not find the page you were looking for. It may have been moved, renamed, or deleted.</p>
-    <a class="button" href="/">Return Home</a>
+    <h1>Contact</h1>
+    <p>Any questions? Please reach out by email, or send us a message on one of our social media pages.</p>
+
+    <div class="card contact-card">
+      <p><strong>For general enquiries, send us an email at:</strong> <a href="mailto:contact@northstar-sg.com">contact@northstar-sg.com</a></p>
+      <p><strong>For legal questions, please contact:</strong> <a href="mailto:legal@northstar-sg.com">legal@northstar-sg.com</a></p>
+      <p><strong>If you are interested in working with us, contact:</strong> <a href="mailto:careers@northstar-sg.com">careers@northstar-sg.com</a></p>
+      <p><strong>For partnership purposes, reach out to:</strong> <a href="mailto:yekhaung.htet@northstar-sg.com">yekhaung.htet@northstar-sg.com</a></p>
+      <p><strong>For fundraising purposes, reach out to:</strong> <a href="mailto:nathan.sims@northstar-sg.com">nathan.sims@northstar-sg.com</a></p>
+      <p>You can also contact us through our official social media pages linked below.</p>
+
+      <ul class="social-list">
+        <li><a href="https://linkedin.com/company/northstar-strategy-group-sro" target="_blank" rel="noopener noreferrer"><img src="/icon-linkedin.png" alt="">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/people/Northstar-Strategy-Group/61591640533546/" target="_blank" rel="noopener noreferrer"><img src="/icon-facebook.png" alt="">Facebook</a></li>
+        <li><a href="https://www.instagram.com/northstar.s.g/" target="_blank" rel="noopener noreferrer"><img src="/icon-instagram.png" alt="">Instagram</a></li>
+      </ul>
+    </div>
   </main>
 
   <footer>
@@ -79,8 +74,6 @@
       <a href="https://linkedin.com/company/northstar-strategy-group-sro" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><img src="/icon-linkedin.png" alt="LinkedIn"></a>
       <a href="https://www.facebook.com/people/Northstar-Strategy-Group/61591640533546/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><img src="/icon-facebook.png" alt="Facebook"></a>
       <a href="https://www.instagram.com/northstar.s.g/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><img src="/icon-instagram.png" alt="Instagram"></a>
-      <a href="https://x.com/Northstarsg1" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer"><img src="/icon-twitter.png" alt="Twitter / X"></a>
-      <a href="https://www.tiktok.com/@northstar.sg" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><img src="/icon-tiktok.png" alt="TikTok"></a>
     </div>
     <p>&copy; 2026 Northstar Strategy Group</p>
     </div>

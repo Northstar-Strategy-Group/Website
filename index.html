@@ -13,6 +13,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="/style.css">
   <script src="/nav.js" defer></script>
+  <script src="/dropdown.js" defer></script>
   <script src="/home-news.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -26,14 +27,19 @@
       <span class="menu-icon" aria-hidden="true"></span>
       <span class="nav-toggle-label">Menu</span>
     </button>
-    <nav id ="site-nav">
+    <nav id="site-nav">
       <a href="/" class="active">Home</a>
       <a href="/current-projects/">Current Projects</a>
       <a href="/news/">News</a>
-      <a href="/team/">Our Team</a>
       <a href="/careers/">Careers</a>
-      <a href="/contact/">Contact</a>
-      <a href="/about/">About</a>
+      <div class="nav-dropdown">
+        <a href="/about/about-us.html" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <div class="nav-dropdown-menu" id="about-menu">
+          <a href="/about/about-us.html">About Us</a>
+          <a href="/about/our-team.html">Our Team</a>
+          <a href="/about/contact.html">Contact</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -77,7 +83,7 @@
       </div>
     </div>
 
-    <a class="button" href="/contact/">Get in Touch</a>
+    <a class="button" href="/about/contact.html">Get in Touch</a>
   </main>
 
   <footer>

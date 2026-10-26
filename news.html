@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="/style.css">
   <script src="/nav.js" defer></script>
   <script src="/dropdown.js" defer></script>
+  <script src="/news.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+  <noscript><style>.news-section { display: none; }</style></noscript>
 </head>
 <body>
   <header id="site-header">
@@ -44,9 +46,26 @@
     </nav>
   </header>
 
-  <main>
+  <main class="news-main">
     <h1>News &amp; Updates</h1>
     <p class="intro">Find the latest updates on Northstar's activities, projects, and events.</p>
+
+    <section class="news-section news-featured" aria-labelledby="featured-news-heading">
+      <p class="news-eyebrow">From Northstar</p>
+      <h2 id="featured-news-heading">Featured news</h2>
+      <div class="news-carousel" data-news-carousel aria-roledescription="carousel" aria-label="Featured news"></div>
+    </section>
+
+    <section class="news-section" aria-labelledby="previous-news-heading">
+      <p class="news-eyebrow">Explore our updates</p>
+      <h2 id="previous-news-heading">Previous news</h2>
+      <div class="news-archive" data-news-archive></div>
+    </section>
+
+    <!-- ADD NEW POSTS HERE: copy any post below, edit it, and paste it at the TOP of this
+         section (newest first). news.js builds the carousel, the cards and the pop-ups from
+         these posts automatically and then hides this list. The first post is the featured one. -->
+    <section class="news-stories" data-news-stories aria-label="All news stories">
 
     <div class="card project-card news-post">
       <div class="post-gallery scroll">
@@ -101,6 +120,20 @@
         </div>
       </div>
     </div>
+    </section>
+
+    <dialog class="news-dialog news-story-dialog" data-story-dialog aria-label="News story">
+      <button type="button" class="news-dialog-close" data-close-story aria-label="Close story">&times;</button>
+      <div class="news-story-content" data-story-content></div>
+    </dialog>
+
+    <dialog class="news-dialog news-image-dialog" data-image-dialog aria-label="Enlarged photo">
+      <button type="button" class="news-dialog-close" data-close-image aria-label="Close photo">&times;</button>
+      <figure class="news-image-figure">
+        <img data-enlarged-image alt="">
+        <figcaption data-image-caption></figcaption>
+      </figure>
+    </dialog>
   </main>
 
   <footer>

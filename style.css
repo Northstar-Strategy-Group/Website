@@ -807,15 +807,6 @@ main.news-main {
   display: none;
 }
 
-.news-eyebrow {
-  margin: 0 0 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 .news-section h2 {
   margin: 0 0 1.25rem;
   font-size: 1.9rem;
@@ -897,7 +888,7 @@ main.news-main {
 .news-feature-body h3 {
   margin: 0 0 1rem;
   font-family: 'Poppins', sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   font-size: clamp(1.5rem, 2.6vw, 2.1rem);
   line-height: 1.2;
   color: var(--navy);
@@ -1147,9 +1138,13 @@ body:has(dialog[open]) {
   scroll-snap-type: none;
 }
 
-.news-post-detail .post-gallery .news-photo-button img {
+.news-post-detail .post-gallery .news-photo-button {
+  flex: 0 1 auto;
   width: min(100%, 550px);
-  max-width: 100%;
+}
+
+.news-post-detail .post-gallery .news-photo-button img {
+  width: 100%;
   height: auto;
   border: 0;
   border-radius: 4px;
@@ -1164,7 +1159,32 @@ body:has(dialog[open]) {
 }
 
 .news-post-detail .project-card-body {
+  display: flex;
+  flex-direction: column;
   padding: 2rem 0 0;
+}
+
+/* Order inside an opened story: date, heading, "View on..." links, then the text */
+.news-post-detail .project-card-body > * {
+  order: 4;
+}
+
+.news-post-detail .project-card-body > .muted {
+  order: 1;
+  margin: 0;
+}
+
+.news-post-detail .project-card-body > h3 {
+  order: 2;
+}
+
+.news-post-detail .project-card-body > .news-links {
+  order: 3;
+  margin: 0 0 1.5rem;
+}
+
+.news-post-detail .project-card-body p {
+  margin: 0 0 1rem;
 }
 
 .news-post-detail .muted {
@@ -1172,12 +1192,12 @@ body:has(dialog[open]) {
 }
 
 .news-post-detail h3 {
-  margin: 0.4rem 0 1rem;
+  margin: 0.4rem 0 0.6rem;
   font-family: 'Poppins', sans-serif;
-  font-weight: 800;
+  font-weight: 600;
   font-size: clamp(1.4rem, 3vw, 1.9rem);
   line-height: 1.25;
-  color: var(--black);
+  color: var(--navy);
 }
 
 .news-image-dialog {

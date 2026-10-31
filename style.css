@@ -1277,3 +1277,7 @@ body:has(dialog[open]) {
     right: 1rem;
   }
 }
+
+main p a:not(.button) {
+  color: var(--navy);
+}

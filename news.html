@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/style.css">
   <script src="/nav.js" defer></script>
   <script src="/dropdown.js" defer></script>
+  <script src="/news.js" defer></script>
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -29,78 +30,106 @@
     </button>
     <nav id="site-nav">
       <a href="/">Home</a>
-      <a href="/current-projects">Current Projects</a>
-      <a href="/services">Services</a>
-      <a href="/news" class="active">News</a>
+      <a href="/current-projects.html">Current Projects</a>
+      <a href="/services.html">Services</a>
+      <a href="/news.html" class="active">News</a>
       <div class="nav-dropdown">
-        <a href="/about-us" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <a href="/about-us.html" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
         <div class="nav-dropdown-menu" id="about-menu">
-          <a href="/about-us">About Us</a>
-          <a href="/our-team">Our Team</a>
-          <a href="/contact">Contact</a>
-          <a href="/careers">Careers</a>
+          <a href="/about-us.html">About Us</a>
+          <a href="/our-team.html">Our Team</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/careers.html">Careers</a>
         </div>
       </div>
     </nav>
   </header>
 
-  <main>
+  <main class="wide news-page">
     <h1>News &amp; Updates</h1>
     <p class="intro">Find the latest updates on Northstar's activities, projects, and events.</p>
 
-    <div class="card project-card news-post">
-      <div class="post-gallery scroll">
-      <img src="/ccef-giz-event1.jpg" alt="CCEF GIZ Event 1">
-      <img src="/ccef-giz-event2.jpg" alt="CCEF GIZ Event 2">
+    <section class="news-featured" aria-labelledby="featured-news-heading">
+      <div class="news-section-heading">
+        <p class="news-eyebrow">From Northstar</p>
+        <h2 id="featured-news-heading">Featured news</h2>
       </div>
-      <div class="project-card-body">
-        <p class="muted">11th October 2026</p>
-        <h3>Promoting a Circular Economy for Cambodia</h3>
-        <p>Northstar recently engaged in the 2026 Cambodia Circular Economy Forum, represented by Ye Khaung Htet. This forum was organised by GIZ, bringing experts in international development into closer contact with local partners in Cambodia.</p>
-        <p>Together, we discussed sustainable development strategies, green systems of waste management, and reducing the environmental impact of industries such as textiles. At this forum, we reaffirmed and deepened our ties with existing partners, and we were pleased to forge new relationships with institutions in both Cambodia and the European Union.</p>
-        <p>We were very grateful to meet so many people who share our vision for long-term, impactful international partnerships to achieve stronger sustainable development outcomes across Southeast Asia.</p>
-        <div class="news-links">
-          <a href="https://www.linkedin.com/company/133243969/" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-          <a href="https://www.facebook.com/people/Northstar-Strategy-Group/61591640533546/" target="_blank" rel="noopener noreferrer">View on Facebook</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="card project-card news-post">
-      <div class="post-gallery scroll">
-      <img src="/10-09-26-event1.jpg" alt="10/09 Event 1">
-      <img src="/10-09-26-event2.JPG" alt="10/09 Event 2">
-      <img src="/10-09-26-event3.jpg" alt="10/09 Event 3">
-      </div>
-      <div class="project-card-body">
-        <p class="muted">11th September 2026</p>
-        <h3>Northstar Attends EU Export Day in Prague</h3>
-        <p>Northstar had the opportunity to attend EU Export Day in Prague, represented by Anna Anufrikova and Finn Chapman. This conference connected businesses, institutions, and professionals to exchange insights and explore international opportunities. It was a valuable opportunity to learn more about European Union trade and export opportunities, while connecting with like-minded professionals and organisations.</p>
-        <p>At Northstar, we believe that meaningful international partnerships and cross-border collaboration are essential to long-term sustainable development, so we were happy to take this opportunity to develop new partnerships and strengthen existing ones.</p>
-        <div class="news-links">
-          <a href="https://lnkd.in/p/dDZQkXJP" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-          <a href="https://www.instagram.com/p/DdI7OhmEnzX" target="_blank" rel="noopener noreferrer">View on Instagram</a>
-        </div>
-      </div>
-    </div>
+      <div class="news-carousel" data-news-carousel aria-live="polite"></div>
+    </section>
 
-    <div class="card project-card news-post">
-      <div class="post-gallery scroll">
-      <img src="/28-08-26-event1.jpeg" alt="28/08 Event 1">
-      <img src="/28-08-26-event2.jpg" alt="28/08 Event 2">
-      <img src="/28-08-26-event3.jpg" alt="28/08 Event 3">
+    <section class="news-archive" aria-labelledby="news-archive-heading">
+      <div class="news-section-heading">
+        <p class="news-eyebrow">Explore our updates</p>
+        <h2 id="news-archive-heading">Previous news</h2>
       </div>
-      <div class="project-card-body">
-        <p class="muted">28th August 2026</p>
-        <h3>Strengthening Czech-Cambodian Development Cooperation</h3>
-        <p>Northstar were honoured to attend a development event hosted by the Embassy of the Czech Republic in Phnom Penh, represented by Ye Khaung Htet. The event brought together organisations throughout Cambodia to discuss opportunities for cooperation on development.</p>
-        <p>As a Czech-based development consulting firm, we are committed to building meaningful connections between Czech partners and local organisations to support impactful and sustainable development initiatives. We sincerely appreciate the Embassy of the Czech Republic in Phnom Penh for the invitation and for opening the door to further dialogue and potential cooperation. We look forward to creating meaningful new partnerships and deepening collaboration between Czech and Cambodian stakeholders.</p>
-        <div class="news-links">
-          <a href="https://lnkd.in/p/dD3axjfH" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-          <a href="https://www.instagram.com/p/Dck42iHEsx5" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+      <div class="news-card-grid" data-news-archive></div>
+    </section>
+
+    <section class="news-stories" data-news-stories aria-label="All news stories">
+      <article class="card project-card news-post" id="circular-economy">
+        <div class="post-gallery scroll">
+          <img src="/ccef-giz-event1.jpg" alt="Participants at the Cambodia Circular Economy Forum">
+          <img src="/ccef-giz-event2.jpg" alt="Northstar representative at the Cambodia Circular Economy Forum">
         </div>
-      </div>
-    </div>
+        <div class="project-card-body">
+          <p class="muted">11th October 2026</p>
+          <h3>Promoting a Circular Economy for Cambodia</h3>
+          <p>Northstar recently engaged in the 2026 Cambodia Circular Economy Forum, represented by Ye Khaung Htet. This forum was organised by GIZ, bringing experts in international development into closer contact with local partners in Cambodia.</p>
+          <p>Together, we discussed sustainable development strategies, green systems of waste management, and reducing the environmental impact of industries such as textiles. At this forum, we reaffirmed and deepened our ties with existing partners, and we were pleased to forge new relationships with institutions in both Cambodia and the European Union.</p>
+          <p>We were very grateful to meet so many people who share our vision for long-term, impactful international partnerships to achieve stronger sustainable development outcomes across Southeast Asia.</p>
+          <div class="news-links">
+            <a href="https://www.linkedin.com/company/133243969/" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
+            <a href="https://www.facebook.com/people/Northstar-Strategy-Group/61591640533546/" target="_blank" rel="noopener noreferrer">View on Facebook</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card news-post" id="eu-export-day">
+        <div class="post-gallery scroll">
+          <img src="/10-09-26-event1.jpg" alt="Northstar representatives at EU Export Day in Prague">
+          <img src="/10-09-26-event2.JPG" alt="EU Export Day event in Prague">
+          <img src="/10-09-26-event3.jpg" alt="Attendees at EU Export Day">
+        </div>
+        <div class="project-card-body">
+          <p class="muted">11th September 2026</p>
+          <h3>Northstar Attends EU Export Day in Prague</h3>
+          <p>Northstar had the opportunity to attend EU Export Day in Prague, represented by Anna Anufrikova and Finn Chapman. This conference connected businesses, institutions, and professionals to exchange insights and explore international opportunities. It was a valuable opportunity to learn more about European Union trade and export opportunities, while connecting with like-minded professionals and organisations.</p>
+          <p>At Northstar, we believe that meaningful international partnerships and cross-border collaboration are essential to long-term sustainable development, so we were happy to take this opportunity to develop new partnerships and strengthen existing ones.</p>
+          <div class="news-links">
+            <a href="https://lnkd.in/p/dDZQkXJP" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
+            <a href="https://www.instagram.com/p/DdI7OhmEnzX" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project-card news-post" id="czech-cambodian-cooperation">
+        <div class="post-gallery scroll">
+          <img src="/28-08-26-event1.jpeg" alt="Development cooperation event in Phnom Penh">
+          <img src="/28-08-26-event2.jpg" alt="Participants at the Czech-Cambodian development event">
+          <img src="/28-08-26-event3.jpg" alt="Northstar representative with event attendees">
+        </div>
+        <div class="project-card-body">
+          <p class="muted">28th August 2026</p>
+          <h3>Strengthening Czech-Cambodian Development Cooperation</h3>
+          <p>Northstar were honoured to attend a development event hosted by the Embassy of the Czech Republic in Phnom Penh, represented by Ye Khaung Htet. The event brought together organisations throughout Cambodia to discuss opportunities for cooperation on development.</p>
+          <p>As a Czech-based development consulting firm, we are committed to building meaningful connections between Czech partners and local organisations to support impactful and sustainable development initiatives. We sincerely appreciate the Embassy of the Czech Republic in Phnom Penh for the invitation and for opening the door to further dialogue and potential cooperation. We look forward to creating meaningful new partnerships and deepening collaboration between Czech and Cambodian stakeholders.</p>
+          <div class="news-links">
+            <a href="https://lnkd.in/p/dD3axjfH" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
+            <a href="https://www.instagram.com/p/Dck42iHEsx5" target="_blank" rel="noopener noreferrer">View on Instagram</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <dialog class="news-story-dialog" data-story-dialog aria-labelledby="story-dialog-title">
+      <button class="news-dialog-close" type="button" data-close-story aria-label="Close story">×</button>
+      <div data-story-content></div>
+    </dialog>
+    <dialog class="news-image-dialog" data-image-dialog aria-label="Enlarged news photo">
+      <button class="news-dialog-close" type="button" data-close-image aria-label="Close photo">×</button>
+      <img data-enlarged-image alt="">
+      <p data-image-caption></p>
+    </dialog>
   </main>
 
   <footer>

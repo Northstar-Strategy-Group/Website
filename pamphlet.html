@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pamphlet | Northstar Strategy Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/nav.js" defer></script>
+  <script src="/dropdown.js" defer></script>
+  <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+  <style>
+    /* Styles for this page only */
+    .pamphlet-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .pamphlet-actions a.button {
+      margin-top: 0;
+    }
+
+    a.button.button-outline {
+      padding: calc(0.7rem - 2px) calc(1.4rem - 2px);
+      border: 2px solid var(--navy);
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    a.button.button-outline:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header">
+    <a class="brand" href="/">
+      <img class="logo-img" src="/logo-wordmark.svg" alt="Northstar Strategy Group">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav">
+      <a href="/">Home</a>
+      <a href="/current-projects">Current Projects</a>
+      <a href="/services">Services</a>
+      <a href="/news">News</a>
+      <div class="nav-dropdown">
+        <a href="/about-us" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <div class="nav-dropdown-menu" id="about-menu">
+          <a href="/about-us">About Us</a>
+          <a href="/our-team">Our Team</a>
+          <a href="/contact">Contact</a>
+          <a href="/careers">Careers</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wide">
+    <h1>Our Pamphlet: Study in Europe 2026 </h1>
+    <p>Welcome! We're glad you're interested in hearing more about us. <b>Read or download our pamphlet for this event</b> to learn more about Northstar, our activities in both the EU & Southeast Asia, and how you can get involved.</p>
+
+    <div class="pamphlet-actions">
+      <!-- To use a new pamphlet later: upload the new PDF with the SAME file name (northstar-pamphlet.pdf) and this page updates by itself. -->
+      <a class="button" href="/northstar-pamphlet.pdf" target="_blank" rel="noopener" data-track="pamphlet-open">Open in a new tab</a>
+      <a class="button button-outline" href="/northstar-pamphlet.pdf" download data-track="pamphlet-download">Download PDF</a>
+    </div>
+
+    <p class="muted">Any questions? Don't hesitate to <a href="/contact">get in touch</a> with us.</p>
+  </main>
+
+  <footer>
+    <div class="footer-legal">
+      <a href="/25-09-2026_Code_of_Conduct.pdf" target="_blank" rel="noopener noreferrer">Code of Conduct</a>
+      <a href="/25-09-2026_Privacy_Policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    </div>
+    <div class="footer-main">
+    <div class="social-icons">
+      <a href="mailto:contact@northstar-sg.com" aria-label="Email us"><img src="/icon-email.png" alt="Email"></a>
+      <a href="https://linkedin.com/company/northstar-strategy-group-sro" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><img src="/icon-linkedin.png" alt="LinkedIn"></a>
+      <a href="https://www.facebook.com/people/Northstar-Strategy-Group/61591640533546/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><img src="/icon-facebook.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/northstar.s.g/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><img src="/icon-instagram.png" alt="Instagram"></a>
+    </div>
+    <p>&copy; 2026 Northstar Strategy Group</p>
+    </div>
+  </footer>
+
+  <script>
+    // Counts button presses in GoatCounter (shown there as "events"), so you can compare
+    // page visits (QR scans) with people who opened or downloaded the PDF.
+    document.querySelectorAll('[data-track]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        if (window.goatcounter && window.goatcounter.count) {
+          window.goatcounter.count({ path: el.getAttribute('data-track'), title: el.textContent.trim(), event: true });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1278,6 +1278,10 @@ body:has(dialog[open]) {
   }
 }
 
+b, strong {
+  font-weight: 600;
+}
+
 main p a:not(.button) {
   color: var(--navy);
 }

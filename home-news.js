@@ -4,7 +4,7 @@
   if (!section || !preview) return;
 
   // newsUrl is the address visitors see; newsSource is the file the latest post is read from
-  const newsUrl = new URL('/news.html', document.baseURI);
+  const newsUrl = new URL('/news', document.baseURI);
   const newsSource = new URL('/news.html', document.baseURI);
 
   fetch(newsSource, { cache: 'no-cache' })

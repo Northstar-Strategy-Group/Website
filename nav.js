@@ -34,6 +34,7 @@
     });
   }
 
+  // Hide on scroll down, show on scroll up
   let lastY = window.scrollY;
   let ticking = false;
 

@@ -1521,3 +1521,11 @@ footer {
     background-attachment: scroll;
   }
 }
+
+b, strong {
+  font-weight: 600;
+}
+
+main p a:not(.button) {
+  color: var(--navy);
+}

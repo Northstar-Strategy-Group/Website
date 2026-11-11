@@ -1264,13 +1264,26 @@ footer {
 
 .home-page .homepage-banner {
   position: relative;
-  height: clamp(320px, 48vw, 620px);
+  /* Same proportions as the photo itself (about 3.18 : 1), so the whole image
+     is shown at full width, like the original banner - no zoom, no cropping.
+     If you ever swap the photo for one with different proportions, change
+     this ratio to its width / height. */
+  aspect-ratio: 3.18 / 1;
   overflow: hidden;
   background-color: #263b4e;
   background-image: url('/homepage-banner.jpg');
-  background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
   background-attachment: fixed;
+}
+
+/* Desktop: the photo stays fixed to the window (parallax). 105px = height of
+   the sticky header, so the photo starts exactly under it when the page loads. */
+@media (min-width: 901px) {
+  .home-page .homepage-banner {
+    background-position: center 105px;
+  }
 }
 
 .home-page .homepage-banner img {
@@ -1298,21 +1311,21 @@ footer {
   z-index: 1;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
-  background: linear-gradient(115deg, #043a6d, #07528f);
+  background: #043a6d;
   box-shadow: 0 24px 60px rgba(4, 33, 59, 0.22);
   text-align: left;
 }
 
 .home-page .hero h1 {
   margin: 0;
-  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-size: 2.85rem;
   line-height: 0.98;
 }
 
 .home-page .hero p {
   max-width: 620px;
   margin: 0;
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-size: 1.1rem;
   line-height: 1.8;
 }
 
@@ -1355,16 +1368,16 @@ footer {
 .home-page .home-story-copy h2,
 .home-page .home-ceo > h2 {
   margin: 0 0 1.25rem;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  line-height: 1.12;
+  font-size: clamp(1.45rem, 2.4vw, 1.65rem);
+  line-height: 1.2;
 }
 
 .home-page .home-story-copy h2::after,
 .home-page .home-ceo > h2::after {
   display: block;
-  width: 3rem;
-  height: 4px;
-  margin-top: 0.9rem;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: 0.7rem;
   border-radius: 4px;
   background: #d3a64b;
   content: '';
@@ -1373,7 +1386,7 @@ footer {
 .home-page .home-story-copy p {
   margin: 0;
   color: #404b55;
-  font-size: clamp(1rem, 1.25vw, 1.1rem);
+  font-size: 1rem;
   line-height: 1.9;
 }
 
@@ -1387,7 +1400,7 @@ footer {
 
 .home-page .latest-news > h2 {
   margin: 0 0 1.5rem;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.65rem);
 }
 
 .home-page .ceo-message {
@@ -1440,23 +1453,19 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .home-page .homepage-banner {
-    height: clamp(230px, 65vw, 350px);
-  }
-
   .home-page .hero {
     grid-template-columns: 1fr;
     gap: 0.85rem;
     width: calc(100% - 2rem);
     min-height: 0;
-    margin-top: -3rem;
+    margin-top: -1rem;
     padding: 1.5rem 1.35rem;
     border-radius: 16px;
     text-align: center;
   }
 
   .home-page .hero h1 {
-    font-size: clamp(2.35rem, 10vw, 3.35rem);
+    font-size: 2.2rem;
   }
 
   .home-page .hero p {

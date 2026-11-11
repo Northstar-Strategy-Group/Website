@@ -19,7 +19,7 @@
   <script data-goatcounter="https://northstar-sg.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </head>
-<body>
+<body class="home-page">
   <header id="site-header">
     <a class="brand" href="/">
       <img class="logo-img" src="/logo-wordmark.svg" alt="Northstar Strategy Group">
@@ -30,16 +30,16 @@
     </button>
     <nav id="site-nav">
       <a href="/" class="active">Home</a>
-      <a href="/current-projects">Current Projects</a>
-      <a href="/services">Services</a>
-      <a href="/news">News</a>
+      <a href="/current-projects.html">Current Projects</a>
+      <a href="/services.html">Services</a>
+      <a href="/news.html">News</a>
       <div class="nav-dropdown">
-        <a href="/about-us" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
+        <a href="/about-us.html" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="about-menu">About</a>
         <div class="nav-dropdown-menu" id="about-menu">
-          <a href="/about-us">About Us</a>
-          <a href="/our-team">Our Team</a>
-          <a href="/contact">Contact</a>
-          <a href="/careers">Careers</a>
+          <a href="/about-us.html">About Us</a>
+          <a href="/our-team.html">Our Team</a>
+          <a href="/contact.html">Contact</a>
+          <a href="/careers.html">Careers</a>
         </div>
       </div>
     </nav>
@@ -54,38 +54,45 @@
     <p>We are a Prague-based sustainable development consultancy working with NGOs to turn research into meaningful change in Southeast Asia.</p>
   </div>
 
-  <main>
+  <main class="home-main">
+    <section class="home-story home-story-about" aria-labelledby="who-we-are-heading">
+      <img class="content-image" src="/czech-flag.jpg" alt="Czech Flag">
+      <div class="home-story-copy">
+        <h2 id="who-we-are-heading">Who We Are</h2>
+        <p>Northstar Strategy Group is a sustainability and development consulting firm based in Prague and operating across Southeast Asia through our hub in Phnom Penh. Using our networks in Europe, North America, and Southeast Asia, we partner with businesses, universities, NGOs, international organisations, and development agencies to deliver practical, evidence-based solutions that create lasting environmental and social impact. This ‘Evidence to Impact’ approach drives everything we do.</p>
+      </div>
+    </section>
 
-    <img class="content-image" src="/czech-flag.jpg" alt="Czech Flag">
-    
-    <h2>Who We Are</h2>
-    <p>Northstar Strategy Group is a sustainability and development consulting firm based in Prague and operating across Southeast Asia through our hub in Phnom Penh. Using our networks in Europe, North America, and Southeast Asia, we partner with businesses, universities, NGOs, international organisations, and development agencies to deliver practical, evidence-based solutions that create lasting environmental and social impact. This ‘Evidence to Impact’ approach drives everything we do.</p>
-
-    <img class="content-image" src="/wat-pho.JPG" alt="Wat Pho">
-
-    <h2>What We Do</h2>
-    <p>Northstar’s mission is to advance sustainable development across Southeast Asia by delivering innovative, evidence-based consulting services that strengthen organisations, empower communities, and create meaningful, long-term partnerships across public, private, academic, and non-profit sectors.</p>
+    <section class="home-story home-story-work" aria-labelledby="what-we-do-heading">
+      <div class="home-story-copy">
+        <h2 id="what-we-do-heading">What We Do</h2>
+        <p>Northstar’s mission is to advance sustainable development across Southeast Asia by delivering innovative, evidence-based consulting services that strengthen organisations, empower communities, and create meaningful, long-term partnerships across public, private, academic, and non-profit sectors.</p>
+      </div>
+      <img class="content-image" src="/wat-pho.JPG" alt="Wat Pho">
+    </section>
 
     <section class="latest-news" aria-labelledby="latest-news-heading" hidden>
       <h2 id="latest-news-heading">Latest News</h2>
       <div id="latest-news-preview"></div>
-      <a class="button" href="/news">More News</a>
+      <a class="button" href="/news.html">More News</a>
     </section>
 
-    <h2>A Message from Our CEO</h2>
-    <div class="card ceo-message">
-      <img class="ceo-photo" src="/anna-headshot.jpg" alt="Anna Anufrikova">
-      <div>
-        <p><i>Northstar Strategy Group&rsquo;s mission is to build meaningful partnerships between communities, organisations, and institutions across Southeast Asia and Europe. We believe that collaboration is the foundation of sustainable development.</p>
-        <p>We recognise that many organisations across Southeast Asia are seeking to expand their partnerships, capacity, and reach, while just as many of our European partners are seeking meaningful engagement with the region. Northstar exists to facilitate these connections, because we believe that partnership, built on listening and shared purpose, creates value for everyone involved.</p>
-        <p>Southeast Asia is a region of extraordinary talent, resilience, and opportunity. It is home to communities and institutions doing vital work every day. We are honoured to support that work, and we approach engagement with humility, respect, and a commitment to people.</p>
-        <p>We value integrity in this work, and we are committed to building our partnerships in a way that respects the dignity, agency, and expertise of everyone we engage with.</i></p>
-        <img class="ceo-signature" src="/anna-signature.png" alt="Anna Anufrikova signature">
-        <p class="ceo-name">Anna Anufrikova</p>
+    <section class="home-ceo" aria-labelledby="ceo-message-heading">
+      <h2 id="ceo-message-heading">A Message from Our CEO</h2>
+      <div class="card ceo-message">
+        <img class="ceo-photo" src="/anna-headshot.jpg" alt="Anna Anufrikova">
+        <div>
+          <p><i>Northstar Strategy Group&rsquo;s mission is to build meaningful partnerships between communities, organisations, and institutions across Southeast Asia and Europe. We believe that collaboration is the foundation of sustainable development.</p>
+          <p>We recognise that many organisations across Southeast Asia are seeking to expand their partnerships, capacity, and reach, while just as many of our European partners are seeking meaningful engagement with the region. Northstar exists to facilitate these connections, because we believe that partnership, built on listening and shared purpose, creates value for everyone involved.</p>
+          <p>Southeast Asia is a region of extraordinary talent, resilience, and opportunity. It is home to communities and institutions doing vital work every day. We are honoured to support that work, and we approach engagement with humility, respect, and a commitment to people.</p>
+          <p>We value integrity in this work, and we are committed to building our partnerships in a way that respects the dignity, agency, and expertise of everyone we engage with.</i></p>
+          <img class="ceo-signature" src="/anna-signature.png" alt="Anna Anufrikova signature">
+          <p class="ceo-name">Anna Anufrikova</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <a class="button" href="/contact">Get in Touch</a>
+    <a class="button" href="/contact.html">Get in Touch</a>
   </main>
 
   <footer>

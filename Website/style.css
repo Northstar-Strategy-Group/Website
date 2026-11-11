@@ -1,0 +1,790 @@
+:root {
+  --navy: #043a6d;
+  --accent: #878992;   /* decorative only — never used for text */
+  --muted: #5e6067;
+  --black: #000000;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300; /* Poppins Light */
+  margin: 0;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.65;
+}
+
+/* Sticky header: stays in the normal page flow (so it never covers the
+   content below it) and sticks to the top while scrolling. nav.js adds
+   the .nav-hidden class to slide it away. */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--white);
+  border-bottom: 1px solid var(--accent);
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: transform 0.3s ease;
+}
+
+header.nav-hidden { transform: translateY(-100%); }
+
+header .brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+header .brand .logo-img {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--navy);
+  background: #fff;
+  font: 700 1rem 'Rajdhani', sans-serif;
+  cursor: pointer;
+}
+
+.menu-icon {
+  position: relative;
+  width: 1.1rem;
+  height: 0.8rem;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.menu-icon::before {
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 0;
+  left: 0;
+  border-top: 2px solid currentColor;
+  content: '';
+}
+
+.nav-toggle:focus-visible,
+header nav a:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+}
+
+nav a {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700; /* Rajdhani Bold */
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1.05rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--navy);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- "About" dropdown (desktop) ---------- */
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-toggle::after {
+  content: '';
+  display: inline-block;
+  width: 0.38em;
+  height: 0.38em;
+  margin-left: 0.45em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  vertical-align: middle;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-toggle {
+  color: var(--navy);
+  border-bottom-color: var(--accent);
+}
+
+.nav-dropdown.is-open .nav-dropdown-toggle::after {
+  transform: translateY(0.1em) rotate(225deg);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1001;
+  min-width: 10rem;
+  margin-top: 0.4rem;
+  padding: 0.35rem 0;
+  background: var(--white);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Invisible bridge so the menu doesn't close while the pointer crosses the gap */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  left: 0;
+  height: 0.5rem;
+}
+
+.nav-dropdown.is-open .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  margin-left: 0;
+  padding: 0.5rem 1.1rem;
+  border-bottom: 0;
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a.active {
+  color: var(--navy);
+  border-bottom: 0;
+  background: rgba(135, 137, 146, 0.12);
+}
+
+.nav-dropdown-menu a:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Mouse users: open on hover (touch screens use tap instead) */
+@media (hover: hover) and (min-width: 901px) {
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-toggle {
+    color: var(--navy);
+    border-bottom-color: var(--accent);
+  }
+
+  .nav-dropdown:hover .nav-dropdown-toggle::after {
+    transform: translateY(0.1em) rotate(225deg);
+  }
+}
+
+.hero {
+  background: var(--navy);
+  color: var(--white);
+  padding: 1rem 2rem 2rem;
+  text-align: center;
+}
+
+.homepage-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero h1 {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700; /* Rajdhani Bold, for the largest heading on the site */
+  font-size: 2.6rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.hero p {
+  color: var(--white);
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+main {
+  max-width: 760px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+main.wide {
+  max-width: 1160px;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800; /* Poppins Extra Bold */
+  color: var(--navy);
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Poppins Semi Bold */
+  color: var(--navy);
+  margin-top: 2rem;
+}
+
+.card {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  background: var(--white);
+}
+
+.card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Poppins Semi Bold */
+  margin-top: 0;
+  color: var(--navy);
+}
+
+.contact-card p > a {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.job-listing strong {
+  font-weight: 600;
+}
+
+.project-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.news-post .project-card-body {
+  padding-top: 0.1rem;
+}
+
+.latest-news-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  padding: 0;
+  overflow: hidden;
+}
+
+.latest-news-image {
+  display: block;
+  min-width: 0;
+}
+
+.latest-news-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.latest-news-body {
+  min-width: 0;
+  padding: 1.25rem 1.5rem;
+}
+
+.latest-news-body h3 {
+  margin: 0 0 0.5rem;
+  color: var(--navy);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.latest-news-body h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.latest-news-body h3 a:hover {
+  text-decoration: underline;
+}
+
+.latest-news-body .muted {
+  margin: 0 0 0.35rem;
+}
+
+.latest-news-excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.latest-news .button {
+  margin-top: 0;
+}
+
+.news-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+.news-links a {
+  color: var(--navy);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.news-links a:hover {
+  text-decoration: underline;
+}
+
+.post-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.post-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+}
+
+.post-gallery.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.post-gallery.grid img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.post-gallery.scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.post-gallery.scroll img {
+  width: auto;
+  height: 440px;
+  max-width: none;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.75rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.team-grid .card {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.team-photo {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  flex-shrink: 0;
+  background: #000;
+}
+
+.team-bio h3 {
+  margin-bottom: 0.25rem;
+}
+
+.team-bio .muted {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.team-card .team-bio {
+  flex: 1;
+}
+
+.intro {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.content-image {
+  width: 80%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0;
+  border: 1px solid var(--accent);
+  display: block;
+  margin: 2.5rem auto 1rem;
+}
+
+.ceo-message {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ceo-photo {
+  width: 335px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid var(--accent);
+  flex-shrink: 0;
+  background: #000;
+  display: block;
+}
+
+.ceo-signature {
+  height: 55px;
+  width: auto;
+  display: block;
+  margin-top: 1rem;
+}
+
+.ceo-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 0.25rem;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.social-list li {
+  margin-bottom: 0.6rem;
+}
+
+.social-list a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.social-list a:hover {
+  color: var(--navy);
+}
+
+.social-list img {
+  width: 30px;
+  height: 30px;
+  display: block;
+  flex-shrink: 0;
+}
+
+a.button {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+a.button:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+footer {
+  position: relative;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--accent);
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.footer-legal {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-legal a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.footer-legal a:hover {
+  color: var(--navy);
+}
+
+@media (max-width: 700px) {
+  .footer-legal {
+    position: static;
+    transform: none;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.social-icons a {
+  width: 36px;
+  height: 36px;
+  display: block;
+  transition: opacity 0.15s;
+}
+
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.social-icons a:hover {
+  opacity: 0.7;
+}
+
+/* ---------- Tablet and mobile ---------- */
+
+@media (max-width: 900px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  header .brand {
+    justify-content: flex-start;
+  }
+
+  header .brand .logo-img {
+    max-width: 100%;
+  }
+
+  header nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  header nav:not(.open) {
+    display: none;
+  }
+
+  header nav.open {
+    display: grid;
+  }
+
+  header nav a {
+    margin-left: 0;
+    padding: 0.5rem 0.25rem;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* About dropdown inside the phone/tablet menu: "About" sits on its own row
+     and the three links expand underneath it. */
+  .nav-dropdown {
+    display: contents;
+  }
+
+  header nav .nav-dropdown-toggle {
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding-inline: 1rem;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .nav-dropdown-menu::before {
+    display: none;
+  }
+
+  .nav-dropdown.is-open .nav-dropdown-menu {
+    display: grid;
+  }
+
+  header nav .nav-dropdown-menu a {
+    padding: 0.5rem 0.25rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  main,
+  main.wide {
+    width: 100%;
+    padding-inline: 1.25rem;
+  }
+
+  .ceo-photo {
+    width: min(100%, 335px);
+    height: auto;
+    aspect-ratio: 335 / 250;
+  }
+
+  .post-gallery.scroll img {
+    height: clamp(220px, 45vw, 360px);
+  }
+}
+
+@media (max-width: 600px) {
+  header nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  header nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  main,
+  main.wide {
+    padding-inline: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .latest-news-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-news-image img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .latest-news-body {
+    padding: 1rem;
+  }
+
+  footer {
+    padding: 1rem;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-icons a {
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -676,8 +676,8 @@ h2 {
 
 .news-title-button {
   font-weight: 600;
-}
-
+} 
+  
 .news-title-button:hover,
 .news-card-link:hover {
   text-decoration: underline;

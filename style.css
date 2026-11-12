@@ -1547,6 +1547,100 @@ body:has(dialog[open]) {
   }
 }
 
+/* ---------- Homepage: "Our Partners" logo banner ---------- */
+
+/* Full-width white banner with gold bars above and below. The width/margin pair
+   lets it break out of the centred content column so it spans the whole screen. */
+/* Prevents a sideways scrollbar caused by the full-width banner on screens
+   that show a classic scrollbar (the 100vw width includes the scrollbar). */
+.home-page {
+  overflow-x: hidden;
+}
+
+.home-page .home-partners {
+  width: 100vw;
+  margin: clamp(4rem, 8vw, 7rem) calc(50% - 50vw);
+  padding: clamp(2.25rem, 4.5vw, 3.5rem) clamp(1.25rem, 5vw, 4rem);
+  border-block: 5px solid #d3a64b;
+  background: var(--white);
+  text-align: center;
+}
+
+.home-page .home-partners > h2 {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem 3rem;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1400px;
+  list-style: none;
+  --logo-h: 84px;
+}
+
+.partner-logos li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.partner-logos a {
+  display: block;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+}
+
+.partner-logos a:hover {
+  opacity: 0.75;
+}
+
+.partner-logos a:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 4px;
+}
+
+.partner-logos img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: var(--logo-h);
+}
+
+/* Fine-tune logos whose shape makes them look too small or too big */
+.partner-logos .partner-tall img { height: calc(var(--logo-h) * 1.3); }
+.partner-logos .partner-wide img { height: calc(var(--logo-h) * 0.85); }
+
+/* Desktop: all logos on one row */
+@media (min-width: 901px) {
+  .partner-logos {
+    flex-wrap: nowrap;
+    gap: clamp(1.5rem, 4vw, 4.5rem);
+    --logo-h: clamp(64px, 7vw, 112px);
+  }
+}
+
+/* Phones: two logos per row, the last one centred underneath */
+@media (max-width: 600px) {
+  .partner-logos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1rem;
+    --logo-h: 68px;
+  }
+
+  .partner-logos li:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
 b, strong {
   font-weight: 600;
 }

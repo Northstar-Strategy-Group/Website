@@ -1296,11 +1296,14 @@ body:has(dialog[open]) {
   background-attachment: fixed;
 }
 
-/* Desktop: the photo stays fixed to the window (parallax). 105px = height of
-   the sticky header, so the photo starts exactly under it when the page loads. */
+/* Desktop: the navbar floats over the top of the photo (the photo starts at the
+   very top of the page and is fixed to the window for the parallax effect).
+   When the navbar slides away on scrolling, the top of the photo is revealed. */
 @media (min-width: 901px) {
-  .home-page .homepage-banner {
-    background-position: center 105px;
+  .home-page header {
+    position: fixed;
+    right: 0;
+    left: 0;
   }
 }
 
@@ -1342,8 +1345,9 @@ body:has(dialog[open]) {
 .home-page .hero p {
   max-width: 620px;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.8;
+  opacity: 1;
 }
 
 .home-page .home-main {
@@ -1402,7 +1406,7 @@ body:has(dialog[open]) {
 
 .home-page .home-story-copy p {
   margin: 0;
-  color: #404b55;
+  color: var(--muted);
   font-size: 1rem;
   line-height: 1.9;
 }
@@ -1451,12 +1455,6 @@ body:has(dialog[open]) {
 
 .home-page .ceo-message .ceo-name {
   margin-bottom: 0;
-}
-
-.home-page .home-main > .button {
-  margin-top: 2rem;
-  padding: 0.85rem 1.65rem;
-  border-radius: 999px;
 }
 
 @media (max-width: 900px) {

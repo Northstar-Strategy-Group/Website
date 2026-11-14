@@ -1327,7 +1327,7 @@ body:has(dialog[open]) {
   gap: clamp(1rem, 2.5vw, 2rem);
   width: min(1200px, calc(100% - clamp(2rem, 8vw, 8rem)));
   /* How far the card overlaps the photo (a bigger number = higher up) */
-  margin: calc(-1 * clamp(1rem, 1.7vw, 2rem)) auto 0;
+  margin: calc(-1 * clamp(1rem, 1.7vw, 1.5rem)) auto 0;
   /* Space inside the card: top/bottom first, then left/right */
   padding: clamp(0.9rem, 1.6vw, 1.4rem) clamp(1.25rem, 2.8vw, 2.25rem);
   position: relative;

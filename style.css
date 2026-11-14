@@ -1559,17 +1559,18 @@ body:has(dialog[open]) {
 
 .home-page .home-partners {
   width: 100vw;
-  margin: clamp(4rem, 8vw, 7rem) calc(50% - 50vw);
+  margin: 0 calc(50% - 50vw) clamp(4rem, 8vw, 7rem);
   padding: clamp(2.25rem, 4.5vw, 3.5rem) clamp(1.25rem, 5vw, 4rem);
   border-block: 5px solid #d3a64b;
   background: var(--white);
   text-align: center;
 }
 
-.home-page .home-partners > h2 {
-  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem);
+.home-page .partners-heading {
+  margin: clamp(4rem, 8vw, 7rem) 0 clamp(1.25rem, 2.5vw, 2rem);
   font-size: clamp(1.45rem, 2.4vw, 1.65rem);
   line-height: 1.2;
+  text-align: center;
 }
 
 .partner-logos {

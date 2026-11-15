@@ -1639,7 +1639,7 @@ body:has(dialog[open]) {
     --logo-h: 68px;
   }
 
-  .partner-logos li:last-child {
+  .partner-logos li:last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }
 }

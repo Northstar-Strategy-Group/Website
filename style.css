@@ -636,11 +636,14 @@ footer {
     max-width: 100%;
   }
 
+  /* Phone/tablet menu: one tidy vertical list, one link per row */
   header nav {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
     width: 100%;
+    margin-top: 0.25rem;
+    border-top: 1px solid rgba(135, 137, 146, 0.35);
   }
 
   .nav-toggle {
@@ -653,40 +656,55 @@ footer {
 
   header nav.open {
     display: grid;
+    /* If the screen is very short, the menu scrolls instead of being cut off */
+    max-height: calc(100vh - 5.5rem);
+    max-height: calc(100dvh - 5.5rem);
+    overflow-y: auto;
   }
 
   header nav a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
     margin-left: 0;
-    padding: 0.5rem 0.25rem;
-    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    padding: 0.7rem 0.5rem;
+    font-size: 1.1rem;
     line-height: 1.2;
-    text-align: center;
+    text-align: left;
+    border-bottom: 1px solid rgba(135, 137, 146, 0.25);
     overflow-wrap: anywhere;
   }
 
-  /* About dropdown inside the phone/tablet menu: "About" sits on its own row
-     and the three links expand underneath it. */
+  header nav a:hover,
+  header nav a.active {
+    color: var(--navy);
+    border-bottom: 1px solid rgba(135, 137, 146, 0.25);
+    background: rgba(135, 137, 146, 0.12);
+  }
+
+  /* About dropdown inside the phone/tablet menu: "About" is a row with an arrow
+     on the right, and the links expand underneath it, slightly indented. */
   .nav-dropdown {
     display: contents;
   }
 
   header nav .nav-dropdown-toggle {
-    grid-column: 1 / -1;
-    justify-self: center;
-    padding-inline: 1rem;
+    justify-content: space-between;
+  }
+
+  header nav .nav-dropdown-toggle::after {
+    margin-right: 0.35rem;
+    margin-left: auto;
   }
 
   .nav-dropdown-menu {
     position: static;
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.25rem;
     min-width: 0;
     margin: 0;
     padding: 0;
     border: 0;
     border-radius: 0;
-    background: none;
+    background: rgba(135, 137, 146, 0.07);
     box-shadow: none;
   }
 
@@ -695,13 +713,14 @@ footer {
   }
 
   .nav-dropdown.is-open .nav-dropdown-menu {
-    display: grid;
+    display: block;
   }
 
   header nav .nav-dropdown-menu a {
-    padding: 0.5rem 0.25rem;
+    padding: 0.65rem 0.5rem 0.65rem 1.75rem;
+    font-size: 1.05rem;
     white-space: normal;
-    text-align: center;
+    text-align: left;
   }
 
   main,
@@ -722,18 +741,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  header nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  header nav a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    font-size: 1rem;
-  }
-
   .hero {
     padding: 1rem;
   }
@@ -1327,7 +1334,7 @@ body:has(dialog[open]) {
   gap: clamp(1rem, 2.5vw, 2rem);
   width: min(1200px, calc(100% - clamp(2rem, 8vw, 8rem)));
   /* How far the card overlaps the photo (a bigger number = higher up) */
-  margin: calc(-1 * clamp(1rem, 1.7vw, 1.5rem)) auto 0;
+  margin: calc(-1 * clamp(1rem, 1.7vw, 2rem)) auto 0;
   /* Space inside the card: top/bottom first, then left/right */
   padding: clamp(0.9rem, 1.6vw, 1.4rem) clamp(1.25rem, 2.8vw, 2.25rem);
   position: relative;

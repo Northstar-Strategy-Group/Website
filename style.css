@@ -854,11 +854,15 @@ main.news-main {
   border-radius: 12px;
   background: #f5f7fb;
   box-shadow: 0 8px 24px rgba(4, 58, 109, 0.07);
+  touch-action: pan-y; /* lets people swipe sideways on the featured post */
 }
 
+/* Fixed height = the height of a post with a four-line title, so the
+   button and arrows stay put when clicking through the featured posts. */
 .news-feature-slide {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  height: 27rem;
 }
 
 .news-feature-image,
@@ -868,7 +872,7 @@ main.news-main {
 }
 
 .news-feature-image {
-  min-height: 340px;
+  min-height: 0;
 }
 
 .news-feature-image img,
@@ -884,9 +888,14 @@ main.news-main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: 0;
+  min-height: 0;
   padding: 2.25rem 2.75rem;
+}
+
+.news-feature-body > * {
+  flex: none;
 }
 
 .news-feature-body .muted {
@@ -900,20 +909,29 @@ main.news-main {
   font-size: clamp(1.5rem, 2.6vw, 2.1rem);
   line-height: 1.2;
   color: var(--navy);
-}
-
-.news-feature-excerpt {
   display: -webkit-box;
-  margin: 0;
   overflow: hidden;
-  color: #3c3f46;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 4; /* titles longer than four lines are cut with "..." */
   line-clamp: 4;
 }
 
+/* Fills the space between the title and the button; news.js sets the exact
+   number of lines that fit (the 3 below is only a fallback). */
+.news-feature-excerpt {
+  display: -webkit-box;
+  flex: 1 1 0;
+  min-height: 0;
+  margin: 0 0 1rem;
+  overflow: hidden;
+  color: #3c3f46;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
 .news-read-button {
-  margin-top: 1.5rem;
+  margin-top: auto;
   padding: 0.7rem 1.4rem;
   border: 0;
   border-radius: 6px;
@@ -1243,9 +1261,16 @@ body:has(dialog[open]) {
   }
 }
 
+@media (max-width: 1000px) {
+  .news-feature-body {
+    padding: 1.75rem 1.75rem;
+  }
+}
+
 @media (max-width: 760px) {
   .news-feature-slide {
     grid-template-columns: 1fr;
+    height: auto;
   }
 
   .news-feature-image {
@@ -1254,6 +1279,7 @@ body:has(dialog[open]) {
   }
 
   .news-feature-body {
+    height: 23rem;
     padding: 1.5rem 1.25rem 1.75rem;
   }
 }

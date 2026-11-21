@@ -10,6 +10,10 @@
 
   if (!carousel || !archive || !storiesSection || !storyDialog || !storyContent || !imageDialog || !enlargedImage || !imageCaption) return;
 
+  // How many of the newest posts appear in the "Featured news" carousel.
+  // (Every post always appears in the "All news" list below it.)
+  const FEATURED_COUNT = 3;
+
   const posts = [...storiesSection.querySelectorAll('.news-post')];
   const getPostInfo = (post) => {
     const body = post.querySelector('.project-card-body');
@@ -145,6 +149,23 @@
 
   const slides = [];
   const dots = [];
+
+  // The featured block has a fixed height, so the arrows never move. The story
+  // preview text gets whatever space is left under the heading: a short heading
+  // leaves room for more lines of text, a long one for fewer.
+  const fitExcerpt = (slide) => {
+    const excerpt = slide?.querySelector('.news-feature-excerpt');
+    if (!excerpt || slide.hidden) return;
+    const lineHeight = parseFloat(getComputedStyle(excerpt).lineHeight);
+    if (!lineHeight) return;
+    excerpt.style.maxHeight = '';
+    const lines = Math.max(1, Math.floor((excerpt.clientHeight + 1) / lineHeight));
+    excerpt.style.maxHeight = `${lines * lineHeight}px`;
+    excerpt.style.setProperty('-webkit-line-clamp', String(lines));
+    excerpt.style.setProperty('line-clamp', String(lines));
+  };
+  const fitActiveExcerpt = () => fitExcerpt(slides.find((slide) => !slide.hidden));
+
   const showSlide = (index) => {
     const activeIndex = (index + slides.length) % slides.length;
     slides.forEach((slide, slideIndex) => {
@@ -152,82 +173,84 @@
       slide.hidden = !active;
       dots[slideIndex].setAttribute('aria-current', String(active));
     });
+    fitExcerpt(slides[activeIndex]);
   };
 
   validPosts.forEach(({ post, info }, index) => {
-    const slide = document.createElement('article');
-    slide.className = 'news-feature-slide';
-    slide.hidden = index !== 0;
+    if (index < FEATURED_COUNT) {
+      const slide = document.createElement('article');
+      slide.className = 'news-feature-slide';
+      slide.hidden = index !== 0;
 
-    const photo = createPhotoButton(info.image, 'news-feature-image');
-    slide.append(photo);
+      const photo = createPhotoButton(info.image, 'news-feature-image');
+      slide.append(photo);
 
-    const body = document.createElement('div');
-    body.className = 'news-feature-body';
-    if (info.date) {
-      const date = document.createElement('p');
-      date.className = 'muted';
-      date.textContent = info.date;
-      body.append(date);
-    }
-    const heading = document.createElement('h3');
-    heading.textContent = info.title;
-    body.append(heading);
-    const excerpt = document.createElement('p');
-    excerpt.className = 'news-feature-excerpt';
-    excerpt.textContent = info.excerpt;
-    body.append(excerpt);
-    const readStory = document.createElement('button');
-    readStory.type = 'button';
-    readStory.className = 'button news-read-button';
-    readStory.textContent = 'Read full story';
-    readStory.addEventListener('click', () => openStory(post));
-    body.append(readStory);
-    slide.append(body);
-    slides.push(slide);
-
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'news-carousel-dot';
-    dot.setAttribute('aria-label', `Show featured news: ${info.title}`);
-    dot.setAttribute('aria-current', String(index === 0));
-    dot.addEventListener('click', () => showSlide(index));
-    dots.push(dot);
-
-    if (index > 0) {
-      const card = document.createElement('article');
-      card.className = 'card news-archive-card';
-      card.append(createPhotoButton(info.image, 'news-archive-image'));
-
-      const cardBody = document.createElement('div');
-      cardBody.className = 'news-archive-body';
+      const body = document.createElement('div');
+      body.className = 'news-feature-body';
       if (info.date) {
         const date = document.createElement('p');
         date.className = 'muted';
         date.textContent = info.date;
-        cardBody.append(date);
+        body.append(date);
       }
-      const cardHeading = document.createElement('h3');
-      const titleButton = document.createElement('button');
-      titleButton.type = 'button';
-      titleButton.className = 'news-title-button';
-      titleButton.textContent = info.title;
-      titleButton.addEventListener('click', () => openStory(post));
-      cardHeading.append(titleButton);
-      cardBody.append(cardHeading);
-      const cardExcerpt = document.createElement('p');
-      cardExcerpt.className = 'news-card-excerpt';
-      cardExcerpt.textContent = info.excerpt;
-      cardBody.append(cardExcerpt);
-      const readButton = document.createElement('button');
-      readButton.type = 'button';
-      readButton.className = 'news-card-link';
-      readButton.textContent = 'Read story';
-      readButton.addEventListener('click', () => openStory(post));
-      cardBody.append(readButton);
-      card.append(cardBody);
-      archive.append(card);
+      const heading = document.createElement('h3');
+      heading.textContent = info.title;
+      body.append(heading);
+      const excerpt = document.createElement('p');
+      excerpt.className = 'news-feature-excerpt';
+      excerpt.textContent = info.excerpt;
+      body.append(excerpt);
+      const readStory = document.createElement('button');
+      readStory.type = 'button';
+      readStory.className = 'button news-read-button';
+      readStory.textContent = 'Read full story';
+      readStory.addEventListener('click', () => openStory(post));
+      body.append(readStory);
+      slide.append(body);
+      slides.push(slide);
+
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'news-carousel-dot';
+      dot.setAttribute('aria-label', `Show featured news: ${info.title}`);
+      dot.setAttribute('aria-current', String(index === 0));
+      dot.addEventListener('click', () => showSlide(index));
+      dots.push(dot);
     }
+
+    // "All news" list: every post, including the featured ones
+    const card = document.createElement('article');
+    card.className = 'card news-archive-card';
+    card.append(createPhotoButton(info.image, 'news-archive-image'));
+
+    const cardBody = document.createElement('div');
+    cardBody.className = 'news-archive-body';
+    if (info.date) {
+      const date = document.createElement('p');
+      date.className = 'muted';
+      date.textContent = info.date;
+      cardBody.append(date);
+    }
+    const cardHeading = document.createElement('h3');
+    const titleButton = document.createElement('button');
+    titleButton.type = 'button';
+    titleButton.className = 'news-title-button';
+    titleButton.textContent = info.title;
+    titleButton.addEventListener('click', () => openStory(post));
+    cardHeading.append(titleButton);
+    cardBody.append(cardHeading);
+    const cardExcerpt = document.createElement('p');
+    cardExcerpt.className = 'news-card-excerpt';
+    cardExcerpt.textContent = info.excerpt;
+    cardBody.append(cardExcerpt);
+    const readButton = document.createElement('button');
+    readButton.type = 'button';
+    readButton.className = 'news-card-link';
+    readButton.textContent = 'Read story';
+    readButton.addEventListener('click', () => openStory(post));
+    cardBody.append(readButton);
+    card.append(cardBody);
+    archive.append(card);
   });
 
   const controls = document.createElement('div');
@@ -254,6 +277,53 @@
   }
   carousel.replaceChildren(...slides, controls);
   storiesSection.hidden = true;
+
+  fitActiveExcerpt();
+  let fitFrame;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(fitFrame);
+    fitFrame = requestAnimationFrame(fitActiveExcerpt);
+  });
+  // Re-fit once the web fonts have loaded (they change how the text wraps)
+  document.fonts?.ready.then(fitActiveExcerpt);
+
+  // Swipe left / right on a featured post to move between them (touch screens)
+  if (slides.length > 1) {
+    let swipeStartX = null;
+    let swipeStartY = null;
+    let suppressSwipeClick = false;
+    let suppressSwipeTimeout;
+    carousel.addEventListener('click', (event) => {
+      if (!suppressSwipeClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressSwipeClick = false;
+    }, true);
+    carousel.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' || event.target.closest('.news-carousel-controls')) return;
+      swipeStartX = event.clientX;
+      swipeStartY = event.clientY;
+    });
+    carousel.addEventListener('pointerup', (event) => {
+      if (swipeStartX === null) return;
+      const distanceX = event.clientX - swipeStartX;
+      const distanceY = event.clientY - swipeStartY;
+      swipeStartX = null;
+      swipeStartY = null;
+      if (Math.abs(distanceX) > 45 && Math.abs(distanceX) > Math.abs(distanceY) * 1.3) {
+        showSlide(slides.findIndex((slide) => !slide.hidden) + (distanceX < 0 ? 1 : -1));
+        suppressSwipeClick = true;
+        clearTimeout(suppressSwipeTimeout);
+        suppressSwipeTimeout = setTimeout(() => {
+          suppressSwipeClick = false;
+        }, 500);
+      }
+    });
+    carousel.addEventListener('pointercancel', () => {
+      swipeStartX = null;
+      swipeStartY = null;
+    });
+  }
 
   document.addEventListener('click', (event) => {
     if (!(event.target instanceof Element)) return;
